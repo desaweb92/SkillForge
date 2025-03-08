@@ -56,7 +56,7 @@ function Blog() {
             </p>
             <button
               onClick={() => handleAccordionClick(5)}
-              className="mt-4 px-4 py-2 bg-[#820000] text-white rounded hover:bg-[#BC0000]"
+              className="text-center w-[30%] my-2 px-4 py-2 rounded-full bg-[#820000] text-white hover:bg-[#BC0000] border-b-4 border-[#CD7F32] leading-5 active:bg-[#820000] active:border-t-4 active:border-b-0 active:border-l-0"
             >
              {activeIndex === 5 ? "Leer menos" : "Leer más"}
             </button>
@@ -151,7 +151,7 @@ function Blog() {
             </p>
             <button
               onClick={() => handleAccordionClick(0)}
-              className="mt-4 px-4 py-2 bg-[#820000] text-white rounded hover:bg-[#BC0000]"
+              className="text-center w-[30%] my-2 px-4 py-2 rounded-full bg-[#820000] text-white hover:bg-[#BC0000] border-b-4 border-[#CD7F32] leading-5 active:bg-[#820000] active:border-t-4 active:border-b-0 active:border-l-0"
             >
               {activeIndex === 0 ? "Leer menos" : "Leer más"}
             </button>
@@ -214,7 +214,7 @@ function Blog() {
             </p>
             <button
               onClick={() => handleAccordionClick(1)}
-              className="mt-4 px-4 py-2 bg-[#820000] text-white rounded hover:bg-[#BC0000]"
+              className="text-center w-[30%] my-2 px-4 py-2 rounded-full bg-[#820000] text-white hover:bg-[#BC0000] border-b-4 border-[#CD7F32] leading-5 active:bg-[#820000] active:border-t-4 active:border-b-0 active:border-l-0"
             >
              {activeIndex === 1 ? "Leer menos" : "Leer más"}
             </button>
@@ -267,7 +267,7 @@ function Blog() {
             </p>
             <button
               onClick={() => handleAccordionClick(2)}
-              className="mt-4 px-4 py-2 bg-[#820000] text-white rounded hover:bg-[#BC0000]"
+              className="text-center w-[30%] my-2 px-4 py-2 rounded-full bg-[#820000] text-white hover:bg-[#BC0000] border-b-4 border-[#CD7F32] leading-5 active:bg-[#820000] active:border-t-4 active:border-b-0 active:border-l-0"
             >
               {activeIndex === 2 ? "Leer menos" : "Leer más"}
             </button>
@@ -319,7 +319,7 @@ function Blog() {
             </p>
             <button
               onClick={() => handleAccordionClick(3)}
-              className="mt-4 px-4 py-2 bg-[#820000] text-white rounded hover:bg-[#BC0000]"
+              className="text-center w-[30%] my-2 px-4 py-2 rounded-full bg-[#820000] text-white hover:bg-[#BC0000] border-b-4 border-[#CD7F32] leading-5 active:bg-[#820000] active:border-t-4 active:border-b-0 active:border-l-0"
             >
               {activeIndex === 3 ? "Leer menos" : "Leer más"}
             </button>
@@ -372,7 +372,7 @@ function Blog() {
             </p>
             <button
               onClick={() => handleAccordionClick(4)}
-              className="mt-4 px-4 py-2 bg-[#820000] text-white rounded hover:bg-[#BC0000]"
+              className="text-center w-[30%] my-2 px-4 py-2 rounded-full bg-[#820000] text-white hover:bg-[#BC0000] border-b-4 border-[#CD7F32] leading-5 active:bg-[#820000] active:border-t-4 active:border-b-0 active:border-l-0"
             >
               {activeIndex === 4 ? "Leer menos" : "Leer más"}
             </button>

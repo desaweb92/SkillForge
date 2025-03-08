@@ -34,7 +34,7 @@ const Header = () => {
   };
 
   return (
-    <nav className=" bg-[#820000] text-white p-2 shadow-lg flex justify-between items-center py-4 font-semibold relative">
+    <nav className="z-20 bg-[#820000] text-white p-2 shadow-lg flex justify-between items-center py-4 font-semibold relative">
       <div className="flex items-center">
         <button
           onClick={toggleMobileMenu}
@@ -70,34 +70,13 @@ const Header = () => {
             <ul className="flex flex-col justify-center items-center space-y-2 mt-2 md:absolute md:bg-[#820000] md:text-center md:text-white md:mt-2 md:p-2 md:space-y-1 md:rounded-full md:shadow-lg md:border-t-4 md:border-[#6B0000] md:flex-row">
               <li className="relative group w-full">
                 <button
-                  onClick={() => toggleSubMenu("cursos")}
+                  onClick={() => handleNavigation("/courses")}
                   className="text-center w-full px-4 py-2 rounded-full hover:bg-[#BC0000] border-b-2 border-l-2 border-[#CD7F32] leading-5 active:bg-[#820000] active:border-t-2 active:border-b-0 active:border-l-0"
                 >
                   Cursos
                 </button>
-                {openSubMenu === "cursos" && (
-                  <ul className="flex flex-col justify-center items-center space-y-2 mt-2 md:absolute md:bg-[#820000] md:text-center md:text-white md:mt-8 md:p-2 md:space-y-1 md:rounded-full md:shadow-lg md:border-t-4 md:border-[#6B0000] md:flex-row">
-                    <li className="p-2 rounded-full text-center hover:bg-[#BC0000] border-b-2 border-l-2 border-[#CD7F32] w-auto md:mx-2 ">
-                      Cursos básicos
-                    </li>
-                    <li className="p-2 rounded-full text-center hover:bg-[#BC0000] border-b-2 border-l-2 border-[#CD7F32] w-auto md:mx-2">
-                      Cursos mixtos
-                    </li>
-                    <li className="p-2 rounded-full text-center hover:bg-[#BC0000] border-b-2 border-l-2 border-[#CD7F32] w-auto md:mx-2">
-                      Cursos personalizados
-                    </li>
-                    <li className="p-2 rounded-full hover:bg-[#BC0000] border-b-2 border-l-2 border-[#CD7F32] text-left w-auto md:mx-2">
-                      Teórico
-                    </li>
-                    <li className="p-2 rounded-full hover:bg-[#BC0000] border-b-2 border-l-2 border-[#CD7F32] text-left w-auto md:mx-2">
-                      Práctico
-                    </li>
-                    <li className="p-2 rounded-full hover:bg-[#BC0000] border-b-2 border-l-2 border-[#CD7F32] text-left w-auto md:mx-2">
-                      Interactivo
-                    </li>
-                  </ul>
-                )}
               </li>
+             
               <li className="p-2 rounded-full text-center bg-[#820000] md:hover:bg-[#BC0000] border-b-2 border-l-2 border-[#CD7F32] w-full mx-2">
                 Juegos y actividades interactivas
               </li>

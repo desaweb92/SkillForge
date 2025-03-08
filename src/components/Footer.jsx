@@ -23,6 +23,7 @@ function Footer() {
               organizaciones mediante la entrega de programas de formación
               innovadores y personalizados.
             </p>
+           
           </div>
           <div className="w-full md:w-1/3 mb-4 md:mb-0">
             <h3 className="text-[25px] text-center  font-bold text-[#CD7F32]">Explora más</h3>
@@ -43,6 +44,11 @@ function Footer() {
                 </a>
               </li>
             </ul>
+            <span className="font-semibold flex items-center justify-center my-3">
+                <img className="mx-2 w-[25px]" src="/src/assets/images/facebook.png" alt="" />
+                <img className="mx-2 w-[25px]" src="/src/assets/images/linkedin.png" alt="" />
+                <img className="mx-2 w-[25px]" src="/src/assets/images/tiktok.png" alt="" />
+              </span>
           </div>
           <div className="w-full md:w-1/3">
             <h3 className="text-[25px] text-center font-bold text-[#CD7F32]">
