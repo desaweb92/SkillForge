@@ -17,9 +17,9 @@ function About() {
         <section className="text-center space-y-6">
           <h1 className="text-4xl font-bold text-[#8B0000]">Sobre Nosotros</h1>
           <img
-            src="/src/assets/images/profile.jpg"
+            src="/src/assets/images/LogoPrincipalSK.png"
             alt="Profile"
-            className="rounded-full shadow-lg w-32 h-32 mx-auto mb-4"
+            className="rounded-full shadow-lg w-52 h-52 mx-auto mb-4 p-1"
           />
           <p className="text-gray-800 max-w-2xl mx-auto leading-relaxed">
             En SkillForge, estamos comprometidos a empoderar a organizaciones y
