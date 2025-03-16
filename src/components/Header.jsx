@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaSearch, FaBars } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-
+import LogoH from "../assets/images/Logo_header.png";
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(null);
   const [openSubMenu, setOpenSubMenu] = useState(null);
@@ -11,7 +11,7 @@ const Header = () => {
 
   const handleNavigation = (path) => {
     navigate(path);
-    setIsMobileMenuOpen(false); // Cerrar el menú móvil al navegar
+    setIsMobileMenuOpen(false); 
   };
 
   const toggleMenu = (menu) => {
@@ -43,7 +43,7 @@ const Header = () => {
           <FaBars />
         </button>
         <div className="flex flex-col items-center justify-center mb-2">
-          <img className="w-[30%]" src="/src/assets/images/Logo_header.png" alt="" />
+          <img className="w-[30%]" src={LogoH} alt="" />
           <h1 className="text-[16px] font-bold text-white px-4 py-1 rounded-full">
             SkillForge
           </h1>

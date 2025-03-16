@@ -4,6 +4,8 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Footer from '../components/Footer';
+import seguridad from "../assets/images/Seguridad.jpg";
+import trabajo from "../assets/images/Trabajo.jpg";
 
 const Home = () => {
   const settings = {
@@ -58,8 +60,8 @@ const Home = () => {
             En SkillForge, estamos comprometidos con empoderar a las organizaciones mediante la entrega de programas de formación innovadores y personalizados. Nuestra misión es desarrollar habilidades críticas, fomentar un entorno de trabajo seguro y promover el crecimiento profesional continuo.
           </p>
           <div className="flex justify-center space-x-6">
-            <img src="/src/assets/images/Seguridad.jpg" alt="SkillForge Training" className="rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 w-1/3" />
-            <img src="/src/assets/images/Trabajo.jpg" alt="SkillForge Solutions" className="rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 w-1/3" />
+            <img src={seguridad} alt="SkillForge Training" className="rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 w-1/3" />
+            <img src={trabajo} alt="SkillForge Solutions" className="rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 w-1/3" />
           </div>
         </section>
 

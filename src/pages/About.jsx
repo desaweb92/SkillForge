@@ -3,8 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { motion } from "framer-motion";
-
+import LogoP from "../assets/images/LogoPrincipalSK.png";
 function About() {
   const percentageEducation = 75;
   const percentageCorporate = 94;
@@ -17,7 +16,7 @@ function About() {
         <section className="text-center space-y-6">
           <h1 className="text-4xl font-bold text-[#8B0000]">Sobre Nosotros</h1>
           <img
-            src="/src/assets/images/LogoPrincipalSK.png"
+            src={LogoP}
             alt="Profile"
             className="rounded-full shadow-lg w-52 h-52 mx-auto mb-4 p-1"
           />

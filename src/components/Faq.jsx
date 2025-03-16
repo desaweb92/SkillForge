@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-
+import Questions from "../assets/images/questions-FAQ.svg";
 function Faq() {
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -147,7 +147,7 @@ function Faq() {
           <div className="w-full h-full md:w-1/2 bg-white p-6 rounded shadow flex flex-col justify-between">
             <div className="flex flex-col items-center justify-center">
             <img
-              src="/src/assets/images/questions-FAQ.svg"
+              src={Questions}
               alt="FAQ Illustration"
               className="w-[50%]"
             />
