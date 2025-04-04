@@ -9,15 +9,16 @@ import Contact from './pages/Contact';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Personalizados from "./components/Personalizados";
-import SeguridadSaludTrabajo from "./components/SeguridadSaludTrabajo";
-import PrevencionIncendios from "./components/PrevencionIncendios";
-import SeguridadEquiposMaquinaria from "./components/SeguridadEquiposMaquinaria";
-import ManejoSustanciasPeligrosas from "./components/ManejoSustanciasPeligrosas";
-import ErgonomiaTrabajo from "./components/ErgonomiaTrabajo";
-import SeguridadInformaticaCiberseguridad from "./components/SeguridadInformaticaCiberseguridad";
-import ConduccionSegura from "./components/ConduccionSegura";
-import GestionEmergenciasEvacuacion from "./components/GestionEmergenciasEvacuacion";
-import SeguridadConstruccion from "./components/SeguridadConstruccion";
+import SeguridadSaludTrabajo from "./components/CursoBasico/SeguridadSaludTrabajo/SeguridadSaludTrabajo";
+import Trabajo_en_alturas from "./components/CursoBasico/Trabajo_en_alturas/Trabajo_en_alturas";
+import PrevencionIncendios from "./components/CursoBasico/PrevencionIncendios/PrevencionIncendios";
+import SeguridadEquiposMaquinaria from "./components/CursoBasico/SeguridadEquiposMaquinaria/SeguridadEquiposMaquinaria";
+import ManejoSustanciasPeligrosas from "./components/CursoBasico/ManejoSustanciasPeligrosas/ManejoSustanciasPeligrosas";
+import ErgonomiaTrabajo from "./components/CursoBasico/ErgonomiaTrabajo/ErgonomiaTrabajo";
+import SeguridadInformaticaCiberseguridad from "./components/CursoBasico/SeguridadInformaticaCiberseguridad/SeguridadInformaticaCiberseguridad";
+import ConduccionSegura from "./components/CursoBasico/ConduccionSegura/ConduccionSegura";
+import GestionEmergenciasEvacuacion from "./components/CursoBasico/GestionEmergenciasEvacuacion/GestionEmergenciasEvacuacion";
+import SeguridadConstruccion from "./components/CursoBasico/SeguridadConstruccion/SeguridadConstruccion";
 import ConsultoriaEspecializada from "./components/ConsultoriaEspecializada";
 import DesarrolloContenidosPersonalizados from "./components/DesarrolloContenidosPersonalizados";
 import EvaluacionesCertificaciones from "./components/EvaluacionesCertificaciones";
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="/Footer" element={<Footer />} />
         <Route path="/Personalizados" element={<Personalizados />} />
         <Route path="/SeguridadSaludTrabajo" element={<SeguridadSaludTrabajo />} />
+        <Route path="/Trabajo_en_alturas" element={<Trabajo_en_alturas />} />
         <Route path="/PrevencionIncendios" element={<PrevencionIncendios />} />
         <Route path="/SeguridadEquiposMaquinaria" element={<SeguridadEquiposMaquinaria />} />
         <Route path="/ManejoSustanciasPeligrosas" element={<ManejoSustanciasPeligrosas />} />

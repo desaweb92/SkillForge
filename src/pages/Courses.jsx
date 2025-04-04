@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import IlustracionCursos from "../assets/images/Ilustration_Cursos.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import {
   faFaceLaugh,
   faFaceLaughBeam,
@@ -51,9 +52,11 @@ function Courses() {
               base sólida sobre la cual construir tus materiales educativos.
               ¡Empieza tu viaje educativo con nosotros hoy mismo!
             </p>
-            <button className="md:w-[30%] text-[#CD7F32] font-bold text-[16px] flex justify-center items-center px-4 py-2 bg-[#BC0000] rounded-full border-b-4 border-[#CD7F32] active:bg-[#820000] active:border-t-4 active:border-b-0 w-full">
-              Ver más
-            </button>
+            <Link to="/Trabajo_en_alturas">
+              <button className="md:w-full text-[#CD7F32] font-bold text-[16px] flex justify-center items-center px-4 py-2 bg-[#BC0000] rounded-full border-b-4 border-[#CD7F32] active:bg-[#820000] active:border-t-4 active:border-b-0 w-full">
+                Ver más
+              </button>
+            </Link>
           </div>
 
           {/* Tarjeta de Servicio */}
