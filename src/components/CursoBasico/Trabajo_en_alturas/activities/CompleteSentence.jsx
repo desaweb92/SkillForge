@@ -97,7 +97,7 @@ const CompleteSentence = ({ datos = { frases: [] }, onComplete }) => {
           <motion.button
             onClick={checkAnswers}
             disabled={Object.keys(answers).length !== frases.length}
-            className="px-6 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 disabled:bg-gray-300 disabled:text-gray-500"
+            className="px-6 py-2 bg-[#BC0000] text-white rounded-lg shadow hover:bg-[#820000] disabled:bg-gray-300 disabled:text-gray-500"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -118,7 +118,7 @@ const CompleteSentence = ({ datos = { frases: [] }, onComplete }) => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="p-3 bg-green-100 text-green-800 rounded-lg text-center"
+            className="p-3 bg-green-100 text-green-500 rounded-lg text-center"
           >
             ¡Perfecto! Todas las respuestas son correctas.
           </motion.div>

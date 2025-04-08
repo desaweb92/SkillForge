@@ -116,7 +116,7 @@ const DragAndDrop = ({ datos = { items: [], targets: [] }, onComplete }) => {
           <button
             onClick={checkAnswers}
             disabled={Object.keys(matches).length !== initialItems.length}
-            className="px-4 py-2 bg-blue-500 text-white rounded disabled:bg-gray-300"
+            className="px-4 py-2 bg-[#BC0000] hover:bg-[#820000] text-white rounded disabled:bg-gray-300"
           >
             Verificar respuestas
           </button>
@@ -127,7 +127,7 @@ const DragAndDrop = ({ datos = { items: [], targets: [] }, onComplete }) => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="md:col-span-2 p-3 bg-green-100 text-green-800 rounded"
+          className="md:col-span-2 p-3 bg-green-100 text-green-500 rounded"
         >
           {Object.keys(matches).length === initialItems.length && 
           initialItems.every(item => matches[item] === initialTargets[initialItems.indexOf(item)]) 

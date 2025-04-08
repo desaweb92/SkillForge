@@ -120,7 +120,7 @@ const MultipleChoice = ({ datos = { preguntas: [] }, onComplete }) => {
           <motion.button
             onClick={checkAnswers}
             disabled={Object.keys(selectedAnswers).length !== preguntas.length}
-            className="px-6 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 disabled:bg-gray-300 disabled:text-gray-500"
+            className="px-6 py-2 bg-[#BC0000] text-white rounded-lg shadow hover:bg-[#820000] disabled:bg-gray-300 disabled:text-gray-500"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -139,7 +139,7 @@ const MultipleChoice = ({ datos = { preguntas: [] }, onComplete }) => {
             
             <motion.button
               onClick={checkAnswers}
-              className="px-6 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700"
+              className="px-6 py-2 bg-[#BC0000] text-white rounded-lg shadow hover:bg-[#820000]"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -155,7 +155,7 @@ const MultipleChoice = ({ datos = { preguntas: [] }, onComplete }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className={`p-4 rounded-lg text-center ${
-            allCorrect ? 'bg-green-100 text-green-800' : 'bg-blue-50 text-blue-800'
+            allCorrect ? 'bg-green-100 text-green-500' : 'bg-blue-50 text-blue-800'
           }`}
         >
           <p>

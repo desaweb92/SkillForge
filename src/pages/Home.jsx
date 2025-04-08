@@ -53,12 +53,15 @@ const Home = () => {
         </Slider>
         </div> */}
 
-        <section className="text-center space-y-6">
-          <h1 className="text-5xl font-extrabold text-[#8B0000] animate-fade-in">Bienvenidos a SkillForge</h1>
-          <h2 className="text-3xl font-bold text-[#CD7F32]">"Transformando potencial en desempeño"</h2>
-          <p className="text-gray-800 max-w-4xl mx-auto leading-relaxed">
-            En SkillForge, estamos comprometidos con empoderar a las organizaciones mediante la entrega de programas de formación innovadores y personalizados. Nuestra misión es desarrollar habilidades críticas, fomentar un entorno de trabajo seguro y promover el crecimiento profesional continuo.
-          </p>
+        <section className="text-center space-y-6 flex flex-col items-center justify-center">
+          <h1 className="text-5xl font-extrabold text-[#8B0000] animate-fade-in">Transformamos ideas en experiencias digitales memorables</h1>
+          <h2 className="text-3xl font-bold text-[#CD7F32]">Cursos virtuales, desarrollo web, juegos interactivos y más. Capacita, educa y conecta con tu audiencia de manera innovadora.</h2>
+          <button
+            // onClick={() => toggleMenu("servicios")}
+            className="w-full md:w-[30%] text-white text-[16px] flex justify-center items-center px-4 py-2 bg-[#BC0000] rounded-full border-b-2 border-[#CD7F32] active:bg-[#820000] active:border-t-2 active:border-b-0"
+          >
+            Descubre nuestros servicios
+          </button>
           <div className="flex justify-center space-x-6">
             <img src={seguridad} alt="SkillForge Training" className="rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 w-1/3" />
             <img src={trabajo} alt="SkillForge Solutions" className="rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 w-1/3" />

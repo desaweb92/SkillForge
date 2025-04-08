@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import LogoP from "../assets/images/LogoPrincipalSK.png";
+import LogoP from "../assets/images/Logo_header_dos.png";
 function About() {
   const percentageEducation = 75;
   const percentageCorporate = 94;

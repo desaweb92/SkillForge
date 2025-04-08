@@ -108,11 +108,11 @@ const WordSearch = ({ data, onComplete }) => {
                 onClick={() => handleCellClick(rowIndex, colIndex)}
                 onMouseEnter={() => handleCellEnter(rowIndex, colIndex)}
                 onMouseUp={handleMouseUp}
-                className={`w-8 h-8 flex items-center justify-center border border-gray-200 cursor-pointer ${
+                className={`w-8 h-8 flex items-center justify-center border-2 border-[#820000] cursor-pointer ${
                   isSelected
-                    ? 'bg-blue-500 text-white'
+                    ? 'bg-[#BC0000] text-white'
                     : isFound
-                    ? 'bg-green-100'
+                    ? 'bg-[#eec8a2]'
                     : 'bg-white'
                 }`}
                 whileHover={{ scale: 1.05 }}
@@ -160,7 +160,7 @@ const WordSearch = ({ data, onComplete }) => {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-2 bg-green-100 text-green-800 rounded text-sm"
+          className="p-2 bg-green-100 text-green-500 rounded text-sm"
         >
           ¡Todas las palabras encontradas!
         </motion.div>
@@ -168,7 +168,7 @@ const WordSearch = ({ data, onComplete }) => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-blue-600 text-sm"
+          className="text-orange-500 text-sm"
         >
           Has encontrado {foundWords.length} de {words.length} palabras
         </motion.div>

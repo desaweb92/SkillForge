@@ -96,14 +96,14 @@ const TrabajoEnAlturas = () => {
         <button
           onClick={diapositivaAnterior}
           disabled={diapositivaActual === 0}
-          className="px-4 py-2 bg-blue-500 text-white rounded disabled:bg-gray-300"
+          className="px-4 py-2 bg-[#BC0000] text-white rounded-full disabled:border-none disabled:bg-gray-300 shadow-md border-b-4 border-[#CD7F32]"
         >
           Anterior
         </button>
         <button
           onClick={siguienteDiapositiva}
           disabled={diapositivaActual === data.length - 1}
-          className="px-4 py-2 bg-blue-500 text-white rounded disabled:bg-gray-300"
+          className="px-4 py-2 bg-[#BC0000] text-white rounded-full disabled:bg-gray-300 shadow-md border-b-4 border-[#CD7F32]"
         >
           Siguiente
         </button>

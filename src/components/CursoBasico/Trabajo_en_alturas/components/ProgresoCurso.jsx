@@ -29,11 +29,11 @@ const ProgresoCurso = ({
       <div className="mb-4">
         <div className="flex justify-between items-center mb-1">
           <span className="text-sm font-medium text-gray-700">Progreso del curso</span>
-          <span className="text-sm font-medium text-blue-600">{porcentajeCompletado}%</span>
+          <span className="text-sm font-medium text-[#BC0000]">{porcentajeCompletado}%</span>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-2.5">
           <motion.div
-            className="bg-blue-600 h-2.5 rounded-full"
+            className="bg-[#BC0000] h-2.5 rounded-full"
             initial={{ width: 0 }}
             animate={{ width: `${porcentajeCompletado}%` }}
             transition={{ duration: 0.5 }}
@@ -42,14 +42,14 @@ const ProgresoCurso = ({
       </div>
 
       {/* Indicadores de diapositivas */}
-      <div className="flex items-center gap-2 overflow-x-auto py-2">
+      <div className="flex items-center gap-2 overflow-x-auto py-2 px-2">
         {Array.from({ length: total }).map((_, index) => (
           <motion.button
             key={index}
             onClick={() => setDiapositivaActual(index)}
             className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center relative ${
               actual === index
-                ? 'bg-blue-500 text-white shadow-md'
+                ? 'bg-[#BC0000] text-white shadow-lg border-b-4 border-[#CD7F32]'
                 : completadas[index]
                 ? 'bg-green-100 text-green-800'
                 : 'bg-gray-100 text-gray-800'
