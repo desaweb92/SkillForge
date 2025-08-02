@@ -1,415 +1,389 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Header from "./Header";
 import Footer from "./Footer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import { FiArrowRight, FiChevronDown, FiPieChart, FiBookOpen, FiCode, FiShield, FiHeart, FiUser } from "react-icons/fi";
+import { FaBrain, FaChalkboardTeacher, FaChild, FaFirstAid } from "react-icons/fa";
 
-function Blog() {
+gsap.registerPlugin(ScrollTrigger);
+
+const Blog = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const sectionRefs = useRef([]);
+  const titleRef = useRef(null);
+
+  // Paleta de colores moderna
+  const colors = {
+    primary: "#6C63FF",
+    secondary: "#00BFB2",
+    accent: "#FF4D7D",
+    highlight: "#FFD166",
+    darkBg: "#0F0F1B",
+    lightText: "#E6F7FF",
+    cardBg: "#FFFFFF"
+  };
+
+  useEffect(() => {
+    // Animación del título con GSAP
+    gsap.from(titleRef.current, {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+      delay: 0.3
+    });
+
+    // Animaciones de artículos al hacer scroll
+    gsap.utils.toArray(".blog-article").forEach((article, i) => {
+      gsap.from(article, {
+        scrollTrigger: {
+          trigger: article,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        },
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        ease: "back.out(1.2)",
+        delay: i * 0.15
+      });
+    });
+
+    // Efecto parallax para el fondo
+    gsap.to(".parallax-bg", {
+      scrollTrigger: {
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true
+      },
+      y: 100,
+      ease: "none"
+    });
+  }, []);
 
   const handleAccordionClick = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
+  const blogPosts = [
+    {
+      title: "La personalización en el aprendizaje corporativo",
+      summary: "Soluciones de aprendizaje altamente personalizadas que se adaptan a los objetivos específicos de tu empresa.",
+      icon: <FaChalkboardTeacher className="text-3xl" />,
+      color: colors.primary,
+      content: [
+        {
+          subtitle: "Personalización basada en datos",
+          points: [
+            "Evaluaciones iniciales para identificar brechas de habilidades",
+            "Rutas de aprendizaje individualizadas para cada empleado"
+          ]
+        },
+        {
+          subtitle: "Tecnología de vanguardia",
+          points: [
+            "Plataforma de aprendizaje adaptativa con algoritmos avanzados",
+            "Análisis y reportes detallados del progreso"
+          ]
+        },
+        {
+          subtitle: "Impacto en el rendimiento",
+          points: [
+            "Alineación con objetivos estratégicos de la empresa",
+            "Mayor retención y satisfacción del empleado"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Ventajas de los cursos virtuales",
+      summary: "Descubre cómo el aprendizaje en línea está transformando la educación corporativa.",
+      icon: <FiBookOpen className="text-3xl" />,
+      color: colors.secondary,
+      content: [
+        {
+          subtitle: "Flexibilidad y accesibilidad",
+          points: [
+            "Aprendizaje a tu propio ritmo desde cualquier lugar",
+            "Acceso 24/7 a los materiales del curso"
+          ]
+        },
+        {
+          subtitle: "Interactividad mejorada",
+          points: [
+            "Herramientas colaborativas como foros y chats",
+            "Simulaciones y juegos educativos"
+          ]
+        },
+        {
+          subtitle: "Actualización continua",
+          points: [
+            "Contenidos siempre actualizados",
+            "Adaptación a las últimas tendencias"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Tecnología en la educación",
+      summary: "Cómo las innovaciones tecnológicas están revolucionando la formación corporativa.",
+      icon: <FiCode className="text-3xl" />,
+      color: colors.accent,
+      content: [
+        {
+          subtitle: "Inteligencia Artificial",
+          points: [
+            "Tutores virtuales personalizados",
+            "Sistemas de recomendación de contenido"
+          ]
+        },
+        {
+          subtitle: "Realidad Virtual y Aumentada",
+          points: [
+            "Experiencias de aprendizaje inmersivas",
+            "Simulaciones de entornos reales"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Tecnología infantil educativa",
+      summary: "Herramientas digitales para potenciar el aprendizaje en los más pequeños.",
+      icon: <FaChild className="text-3xl" />,
+      color: colors.highlight,
+      content: [
+        {
+          subtitle: "Aplicaciones educativas",
+          points: [
+            "Actividades interactivas y personalizadas",
+            "Desarrollo de habilidades cognitivas"
+          ]
+        },
+        {
+          subtitle: "Seguridad en línea",
+          points: [
+            "Protección de datos personales",
+            "Control parental y contenido apropiado"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Seguridad en el trabajo",
+      summary: "Estrategias para crear entornos laborales más seguros y productivos.",
+      icon: <FiShield className="text-3xl" />,
+      color: colors.primary,
+      content: [
+        {
+          subtitle: "Prevención de riesgos",
+          points: [
+            "Identificación proactiva de peligros",
+            "Protocolos de actuación"
+          ]
+        },
+        {
+          subtitle: "Cultura de seguridad",
+          points: [
+            "Empoderamiento de los empleados",
+            "Comunicación abierta sobre riesgos"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Primeros auxilios en la empresa",
+      summary: "Por qué toda organización debe capacitar a su personal en primeros auxilios.",
+      icon: <FaFirstAid className="text-3xl" />,
+      color: colors.secondary,
+      content: [
+        {
+          subtitle: "Respuesta rápida",
+          points: [
+            "Técnicas básicas que salvan vidas",
+            "Manejo de situaciones de emergencia"
+          ]
+        },
+        {
+          subtitle: "Capacitación obligatoria",
+          points: [
+            "Personal certificado en primeros auxilios",
+            "Simulacros periódicos"
+          ]
+        }
+      ]
+    }
+  ];
+
+  const cardVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: [0.2, 0.8, 0.4, 1]
+      }
+    },
+    hover: {
+      y: -5,
+      boxShadow: "0 10px 25px -5px rgba(108, 99, 255, 0.3)",
+      transition: { duration: 0.3 }
+    }
+  };
+
+  const contentVariants = {
+    hidden: { height: 0, opacity: 0 },
+    visible: {
+      height: "auto",
+      opacity: 1,
+      transition: {
+        duration: 0.4,
+        ease: "easeInOut"
+      }
+    },
+    exit: {
+      height: 0,
+      opacity: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut"
+      }
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-[#F5F5F5] text-gray-800">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white text-gray-900">
+      {/* Fondo decorativo */}
+      <div className="parallax-bg fixed inset-0 w-full h-full opacity-5 pointer-events-none" 
+           style={{ backgroundImage: "radial-gradient(circle at 50% 50%, #6C63FF, transparent 70%)" }} />
+      
       <Header />
-      <motion.h1
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-4xl font-bold text-center mt-8 text-[#CD7F32]"
-      >
-        Bienvenidos al Blog de SkillForge
-      </motion.h1>
-
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="max-w-3xl mx-auto mt-8 p-6 bg-white rounded-lg shadow-md"
-      >
-        <p className="text-black">
-          En SkillForge, estamos comprometidos con la transformación de las
-          organizaciones a través de la formación y el desarrollo profesional.
-          Nuestro blog es un espacio donde compartimos conocimientos, tendencias
-          y tecnologías que impulsan el aprendizaje corporativo.
-        </p>
-      </motion.section>
-
-      <div className="flex justify-center items-center w-full my-4">
-        <section className="max-w-xl mx-auto mt-8 space-y-6">
-          <motion.article
-            whileHover={{ scale: 1.05 }}
-            className="p-6 bg-white rounded-lg shadow-md"
+      
+      <main className="px-6 py-12 md:px-12 lg:px-24 space-y-16">
+        {/* Hero Section */}
+        <section className="text-center max-w-4xl mx-auto">
+         <h1 className="text-4xl md:text-6xl  font-bold leading-tight my-2">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600">
+                Explora nuestro
+              </span>{" "}
+              <span className="text-purple-600">blog educativo</span>
+            </h1>
+          
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="text-xl text-gray-600"
           >
-            <h2 className="text-2xl font-semibold text-[#CD7F32]">
-              La personalización en el aprendizaje corporativo
-            </h2>
-
-            <p className="text-black">
-              En SkillForge, entendemos que cada organización es única, al igual
-              que sus necesidades de formación. Por eso, nos enorgullece ofrecer
-              soluciones de aprendizaje altamente personalizadas que se adaptan
-              a los objetivos y desafíos específicos de tu empresa.
-            </p>
-            <button
-              onClick={() => handleAccordionClick(5)}
-              className="text-center w-[30%] my-2 px-4 py-2 rounded-full bg-[#820000] text-white hover:bg-[#BC0000] border-b-4 border-[#CD7F32] leading-5 active:bg-[#820000] active:border-t-4 active:border-b-0 active:border-l-0"
-            >
-             {activeIndex === 5 ? "Leer menos" : "Leer más"}
-            </button>
-            {activeIndex === 5 && (
-              <motion.div
-                initial={{ height: 0 }}
-                animate={{ height: "auto" }}
-                transition={{ duration: 0.5 }}
-                className="mt-4 text-black overflow-hidden"
-              >
-                <strong className="text-[#CD7F32]">
-                  <FontAwesomeIcon icon={faPencil} className="mr-2 text-[#CD7F32]" />
-                  Personalización basada en datos:
-                </strong>
-                <p className="mb-2">
-                  <strong>Evaluaciones iniciales:</strong> Realizamos
-                  evaluaciones detalladas para identificar las brechas de
-                  habilidades y áreas de mejora dentro de tu equipo. Esto nos
-                  permite diseñar programas de formación que aborden necesidades
-                  específicas y maximicen el impacto del aprendizaje.
-                </p>
-
-                <p className="mb-2">
-                  <strong> Rutas de aprendizaje individualizadas:</strong>{" "}
-                  Creamos rutas de aprendizaje personalizadas para cada
-                  empleado, asegurando que reciban la formación adecuada en el
-                  momento adecuado. Esto no solo mejora la eficiencia del
-                  aprendizaje, sino que también aumenta la motivación y el
-                  compromiso de los empleados.
-                </p>
-
-                <strong className="text-[#CD7F32]">
-                  <FontAwesomeIcon icon={faPencil} className="mr-2 text-[#CD7F32]" />
-                  Tecnología de vanguardia:
-                </strong>
-                <p className="mb-2">
-                  <strong>Plataforma de aprendizaje adaptativa:</strong> Nuestra
-                  plataforma utiliza algoritmos avanzados para adaptar el
-                  contenido y la dificultad de los cursos según el progreso y
-                  las necesidades individuales de cada estudiante. Esto
-                  garantiza que cada empleado reciba una experiencia de
-                  aprendizaje única y efectiva.
-                </p>
-
-                <p className="mb-2">
-                  <strong>Análisis y reportes detallados:</strong>{" "}
-                  Proporcionamos análisis detallados y reportes sobre el
-                  progreso y el rendimiento de los empleados, permitiendo a los
-                  líderes tomar decisiones informadas sobre el desarrollo
-                  continuo de sus equipos.
-                </p>
-
-                <strong className="text-[#CD7F32]">
-                  <FontAwesomeIcon icon={faPencil} className="mr-2 text-[#CD7F32]" />
-                  Impacto en el rendimiento empresarial:
-                </strong>
-                <p className="mb-2">
-                  <strong>Alineación con objetivos estratégicos:</strong> Al
-                  personalizar nuestros programas de formación para alinearse
-                  con los objetivos estratégicos de tu empresa, ayudamos a
-                  impulsar el rendimiento general y a alcanzar metas
-                  organizacionales clave.
-                </p>
-
-                <p className="mb-2">
-                  <strong>Retención y satisfacción del empleado:</strong> La
-                  formación personalizada no solo mejora las habilidades de los
-                  empleados, sino que también aumenta su satisfacción y lealtad
-                  hacia la empresa, reduciendo la rotación de personal y
-                  fomentando un ambiente de trabajo positivo.
-                </p>
-              </motion.div>
-            )}
-          </motion.article>
-
-          <motion.article
-            whileHover={{ scale: 1.05 }}
-            className="p-6 bg-white rounded-lg shadow-md"
-          >
-            <h2 className="text-2xl font-semibold text-[#CD7F32]">
-              Conoce las ventajas de aprender en cursos virtuales
-            </h2>
-            <strong>
-              <FontAwesomeIcon icon={faPencil} className="mr-2" />
-              Flexibilidad y accesibilidad:
-            </strong>
-            <p>
-              Los cursos virtuales permiten a los estudiantes aprender a su
-              propio ritmo y desde cualquier lugar, lo que es especialmente
-              beneficioso para aquellos con horarios ocupados o limitaciones
-              geográficas.
-            </p>
-            <button
-              onClick={() => handleAccordionClick(0)}
-              className="text-center w-[30%] my-2 px-4 py-2 rounded-full bg-[#820000] text-white hover:bg-[#BC0000] border-b-4 border-[#CD7F32] leading-5 active:bg-[#820000] active:border-t-4 active:border-b-0 active:border-l-0"
-            >
-              {activeIndex === 0 ? "Leer menos" : "Leer más"}
-            </button>
-            {activeIndex === 0 && (
-              <motion.div
-                initial={{ height: 0 }}
-                animate={{ height: "auto" }}
-                transition={{ duration: 0.5 }}
-                className="mt-4 text-black overflow-hidden"
-              >
-                <strong>
-                  <FontAwesomeIcon icon={faPencil} className="mr-2" />
-                  Interactividad y participación:
-                </strong>
-                <p className="mb-2">
-                  Las plataformas de aprendizaje en línea ofrecen herramientas
-                  interactivas como foros, chats y videoconferencias que
-                  fomentan la participación activa y la colaboración entre
-                  estudiantes.
-                </p>
-
-                <strong>
-                  <FontAwesomeIcon icon={faPencil} className="mr-2" />
-                  Variedad de recursos:
-                </strong>
-                <p className="mb-2">
-                  Los cursos virtuales pueden integrar una amplia gama de
-                  recursos multimedia, como videos, simulaciones y juegos
-                  educativos, que hacen el aprendizaje más atractivo y efectivo.
-                </p>
-
-                <strong>
-                  <FontAwesomeIcon icon={faPencil} className="mr-2" />{" "}
-                  Actualización continua:
-                </strong>
-                <p className="mb-2">
-                  Los contenidos de los cursos virtuales pueden actualizarse
-                  fácilmente para reflejar los últimos avances y tendencias en
-                  el campo de estudio.
-                </p>
-              </motion.div>
-            )}
-          </motion.article>
-
-          <motion.article
-            whileHover={{ scale: 1.05 }}
-            className="p-6 bg-white rounded-lg shadow-md"
-          >
-            <h2 className="text-2xl font-semibold text-[#CD7F32]">
-              Tecnología
-            </h2>
-            <strong>
-              <FontAwesomeIcon icon={faPencil} className="mr-2" />
-              Impacto en la educación:
-            </strong>
-            <p>
-              La tecnología ha transformado la educación, permitiendo el acceso
-              a recursos ilimitados y herramientas que personalizan el
-              aprendizaje según las necesidades individuales.
-            </p>
-            <button
-              onClick={() => handleAccordionClick(1)}
-              className="text-center w-[30%] my-2 px-4 py-2 rounded-full bg-[#820000] text-white hover:bg-[#BC0000] border-b-4 border-[#CD7F32] leading-5 active:bg-[#820000] active:border-t-4 active:border-b-0 active:border-l-0"
-            >
-             {activeIndex === 1 ? "Leer menos" : "Leer más"}
-            </button>
-            {activeIndex === 1 && (
-              <motion.div
-                initial={{ height: 0 }}
-                animate={{ height: "auto" }}
-                transition={{ duration: 0.5 }}
-                className="mt-4 text-black overflow-hidden"
-              >
-                <strong>
-                  <FontAwesomeIcon icon={faPencil} className="mr-2" />
-                  Inteligencia artificial y machine learning:
-                </strong>
-                <p className="mb-2">
-                  Estas tecnologías están siendo utilizadas para crear tutores
-                  virtuales y sistemas de recomendación que adaptan el
-                  aprendizaje a las capacidades y estilos de los estudiantes.
-                </p>
-
-                <strong>
-                  <FontAwesomeIcon icon={faPencil} className="mr-2" />
-                  Realidad Aumentada (AR) y Realidad Virtual (VR):
-                </strong>
-                <p className="mb-2">
-                  AR y VR ofrecen experiencias de aprendizaje inmersivas que
-                  pueden simular entornos reales, mejorando la comprensión y
-                  retención de conceptos complejos.
-                </p>
-              </motion.div>
-            )}
-          </motion.article>
+            Descubre artículos, tendencias y consejos sobre formación corporativa, tecnología educativa y desarrollo profesional.
+          </motion.p>
         </section>
-        <section className="max-w-xl mx-auto mt-8 space-y-6">
-          <motion.article
-            whileHover={{ scale: 1.05 }}
-            className="p-6 bg-white rounded-lg shadow-md"
-          >
-            <h2 className="text-2xl font-semibold text-[#CD7F32]">
-              Tecnología infantil
-            </h2>
-            <strong>
-              <FontAwesomeIcon icon={faPencil} className="mr-2" />
-              Aplicaciones Educativas:
-            </strong>
-            <p>
-              Las aplicaciones diseñadas para el aprendizaje infantil pueden ser
-              una herramienta valiosa para complementar la educación
-              tradicional, ofreciendo actividades interactivas y personalizadas.
-            </p>
-            <button
-              onClick={() => handleAccordionClick(2)}
-              className="text-center w-[30%] my-2 px-4 py-2 rounded-full bg-[#820000] text-white hover:bg-[#BC0000] border-b-4 border-[#CD7F32] leading-5 active:bg-[#820000] active:border-t-4 active:border-b-0 active:border-l-0"
+
+        {/* Blog Posts Grid */}
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {blogPosts.map((post, index) => (
+            <motion.article
+              key={index}
+              className="blog-article bg-white rounded-xl shadow-md overflow-hidden"
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              whileHover="hover"
             >
-              {activeIndex === 2 ? "Leer menos" : "Leer más"}
-            </button>
-            {activeIndex === 2 && (
-              <motion.div
-                initial={{ height: 0 }}
-                animate={{ height: "auto" }}
-                transition={{ duration: 0.5 }}
-                className="mt-4 text-black overflow-hidden"
-              >
-                <strong>
-                  <FontAwesomeIcon icon={faPencil} className="mr-2" />
-                  Seguridad en línea:
-                </strong>
-                <p className="mb-2">
-                  Es crucial enseñar a los niños sobre la seguridad en línea
-                  desde una edad temprana, incluyendo la protección de datos
-                  personales y el reconocimiento de contenido inapropiado.
-                </p>
+              <div className="p-6">
+                <div className={`w-16 h-16 rounded-xl flex items-center justify-center mb-4`} style={{ backgroundColor: `${post.color}20`, color: post.color }}>
+                  {post.icon}
+                </div>
+                
+                <h2 className="text-2xl font-bold mb-3 text-gray-900">{post.title}</h2>
+                <p className="text-gray-600 mb-4">{post.summary}</p>
+                
+                <motion.button
+                  onClick={() => handleAccordionClick(index)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium`}
+                  style={{ color: post.color, backgroundColor: `${post.color}10` }}
+                  whileHover={{ backgroundColor: `${post.color}20` }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {activeIndex === index ? "Mostrar menos" : "Leer más"}
+                  <motion.span
+                    animate={{ rotate: activeIndex === index ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <FiChevronDown />
+                  </motion.span>
+                </motion.button>
+              </div>
 
-                <strong>
-                  <FontAwesomeIcon icon={faPencil} className="mr-2" />
-                  Aprendizaje basado en proyectos:
-                </strong>
-                <p className="mb-2">
-                  Este enfoque permite a los niños aplicar lo que han aprendido
-                  en contextos del mundo real, desarrollando habilidades de
-                  pensamiento crítico y resolución de problemas.
-                </p>
-              </motion.div>
-            )}
-          </motion.article>
-
-          <motion.article
-            whileHover={{ scale: 1.05 }}
-            className="p-6 bg-white rounded-lg shadow-md"
-          >
-            <h2 className="text-2xl font-semibold text-[#CD7F32]">
-              Seguridad en el trabajo
-            </h2>
-            <strong>
-              <FontAwesomeIcon icon={faPencil} className="mr-2" />
-              Prevención de riesgos:
-            </strong>
-            <p>
-              La identificación y mitigación proactiva de riesgos en el lugar de
-              trabajo pueden prevenir accidentes y enfermedades, mejorando la
-              seguridad general de los empleados.
-            </p>
-            <button
-              onClick={() => handleAccordionClick(3)}
-              className="text-center w-[30%] my-2 px-4 py-2 rounded-full bg-[#820000] text-white hover:bg-[#BC0000] border-b-4 border-[#CD7F32] leading-5 active:bg-[#820000] active:border-t-4 active:border-b-0 active:border-l-0"
-            >
-              {activeIndex === 3 ? "Leer menos" : "Leer más"}
-            </button>
-            {activeIndex === 3 && (
-              <motion.div
-                initial={{ height: 0 }}
-                animate={{ height: "auto" }}
-                transition={{ duration: 0.5 }}
-                className="mt-4 text-black overflow-hidden"
-              >
-                <strong>
-                  <FontAwesomeIcon icon={faPencil} className="mr-2" />
-                  Cultura de seguridad:
-                </strong>
-                <p className="mb-2">
-                  Fomentar una cultura de seguridad en la que todos los
-                  empleados se sientan responsables y empoderados para
-                  identificar y abordar riesgos puede reducir significativamente
-                  los incidentes.
-                </p>
-
-                <strong>
-                  <FontAwesomeIcon icon={faPencil} className="mr-2" />
-                  Capacitación continua:
-                </strong>
-                <p className="mb-2">
-                  La formación regular en prácticas de seguridad y el uso
-                  adecuado de equipos de protección personal (EPP) es esencial
-                  para mantener un entorno de trabajo seguro.
-                </p>
-              </motion.div>
-            )}
-          </motion.article>
-
-          <motion.article
-            whileHover={{ scale: 1.05 }}
-            className="p-6 bg-white rounded-lg shadow-md"
-          >
-            <h2 className="text-2xl font-semibold text-[#CD7F32]">
-              Primeros auxilios
-            </h2>
-            <strong>
-              <FontAwesomeIcon icon={faPencil} className="mr-2" />
-              Importancia de la respuesta rápida:
-            </strong>
-            <p>
-              Conocer técnicas básicas de primeros auxilios puede marcar la
-              diferencia en situaciones de emergencia, proporcionando atención
-              inmediata que puede salvar vidas.
-            </p>
-            <button
-              onClick={() => handleAccordionClick(4)}
-              className="text-center w-[30%] my-2 px-4 py-2 rounded-full bg-[#820000] text-white hover:bg-[#BC0000] border-b-4 border-[#CD7F32] leading-5 active:bg-[#820000] active:border-t-4 active:border-b-0 active:border-l-0"
-            >
-              {activeIndex === 4 ? "Leer menos" : "Leer más"}
-            </button>
-            {activeIndex === 4 && (
-              <motion.div
-                initial={{ height: 0 }}
-                animate={{ height: "auto" }}
-                transition={{ duration: 0.5 }}
-                className="mt-4 text-black overflow-hidden"
-              >
-                <strong>
-                  <FontAwesomeIcon icon={faPencil} className="mr-2" />
-                  Capacitación para todos:
-                </strong>
-                <p className="mb-2">
-                  Todos los empleados deben recibir capacitación en primeros
-                  auxilios para asegurar que haya personas capacitadas
-                  disponibles en caso de emergencia.
-                </p>
-
-                <strong>
-                  <FontAwesomeIcon icon={faPencil} className="mr-2" />
-                  Uso de tecnología en primeros auxilios:
-                </strong>
-                <p className="mb-2">
-                  Las aplicaciones móviles y dispositivos portátiles pueden
-                  proporcionar guías paso a paso y acceso rápido a información
-                  crítica durante una emergencia.
-                </p>
-              </motion.div>
-            )}
-          </motion.article>
+              <AnimatePresence>
+                {activeIndex === index && (
+                  <motion.div
+                    className="overflow-hidden"
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    variants={contentVariants}
+                  >
+                    <div className="px-6 pb-6 pt-0 space-y-4">
+                      {post.content.map((section, i) => (
+                        <div key={i} className="space-y-2">
+                          <h3 className="font-semibold text-lg" style={{ color: post.color }}>{section.subtitle}</h3>
+                          <ul className="space-y-2 pl-5">
+                            {section.points.map((point, j) => (
+                              <li key={j} className="flex items-start gap-2">
+                                <span className="mt-1 flex-shrink-0" style={{ color: post.color }}>
+                                  <FiCheck />
+                                </span>
+                                <span className="text-gray-700">{point}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.article>
+          ))}
         </section>
-      </div>
+
+        {/* CTA Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="py-16 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-3xl text-white text-center"
+        >
+          <div className="max-w-2xl mx-auto px-6">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">¿Quieres más contenido como este?</h2>
+            <p className="text-xl text-purple-100 mb-8">Suscríbete a nuestro newsletter para recibir los últimos artículos y actualizaciones directamente en tu correo.</p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+              <input 
+                type="email" 
+                placeholder="Tu correo electrónico" 
+                className="flex-1 px-6 py-3 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-300"
+              />
+              <motion.button
+                whileHover={{ scale: 1.05, backgroundColor: "#fff", color: colors.primary }}
+                whileTap={{ scale: 0.98 }}
+                className="px-8 py-3 bg-purple-800 text-white rounded-full font-bold flex items-center gap-2 justify-center"
+              >
+                Suscribirse <FiArrowRight />
+              </motion.button>
+            </div>
+          </div>
+        </motion.section>
+      </main>
+      
       <Footer />
     </div>
   );
-}
+};
 
 export default Blog;
