@@ -34,7 +34,6 @@ const Courses = () => {
           toggleActions: "play none none none"
         },
         y: 20,
-        opacity: 0,
         duration: 0.5,
         ease: "power2.out",
         delay: i * 0.1
@@ -44,7 +43,6 @@ const Courses = () => {
     // Animación del título
     gsap.from(".title-animation", {
       y: 20,
-      opacity: 0,
       duration: 0.8,
       ease: "power3.out",
       delay: 0.2
@@ -59,7 +57,6 @@ const Courses = () => {
           toggleActions: "play none none none"
         },
         x: i % 2 === 0 ? -20 : 20,
-        opacity: 0,
         duration: 0.5,
         ease: "back.out(1.7)",
         delay: i * 0.1
@@ -69,9 +66,9 @@ const Courses = () => {
 
   // Variantes de animación para Framer Motion
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { y: 20 },
     visible: {
-      opacity: 1,
+      y: 0,
       transition: {
         staggerChildren: 0.1,
         delayChildren: 0.2
@@ -80,10 +77,9 @@ const Courses = () => {
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 20 },
     visible: {
       y: 0,
-      opacity: 1,
       transition: {
         duration: 0.5,
         ease: [0.2, 0.8, 0.4, 1]
@@ -104,7 +100,7 @@ const Courses = () => {
     tap: { scale: 0.98 }
   };
 
-  const coursesList = [
+  const courses = [
     {
       title: "Básicos",
       description: "Plantillas predefinidas listas para usar, ideales para implementación rápida y eficiente.",
@@ -208,8 +204,8 @@ const Courses = () => {
         {/* Cursos Section */}
         <section className="space-y-16">
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 20 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-4xl font-bold text-center title-animation"
@@ -218,7 +214,7 @@ const Courses = () => {
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {coursesList.map((course, index) => (
+            {courses.map((course, index) => (
               <motion.div
                 key={index}
                 className="course-card p-8 rounded-2xl relative overflow-hidden"
@@ -314,8 +310,8 @@ const Courses = () => {
         {/* CTA Section */}
         <section className="py-16 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-3xl text-white text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 20 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             className="px-8"
